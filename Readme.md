@@ -90,6 +90,13 @@ docker run -d \
 
 Access DOMjudge at: `http://localhost:12345`
 
+### 6. Admin Credentials  
+username: admin
+For password, run the following:
+```bash
+docker exec -it domserver cat /opt/domjudge/domserver/etc/initial_admin_password.secret
+```
+
 ## Troubleshooting
 
 ### Container Stops with Cgroup Error
