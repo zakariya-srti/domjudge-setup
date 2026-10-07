@@ -58,8 +58,19 @@ docker run -d \
 
 ### 4. Run DOMjudge Judgehost
 
-Start the judgehost container:
+Start the judgehost container:  
+Check the judgehost password using:
+```bash
+docker exec -it domserver cat /opt/domjudge/domserver/etc/restapi.secret
+```
 
+It will give something like: 
+```bash
+# Randomly generated on host b8314ce8dee2, Wed Oct  7 22:55:57 PKT 2026
+# Format: '<ID> <API url> <user> <password>'
+default http://localhost//api   judgehost       X7xACY+3I4KlCCkxn7BfYiuPSGh1S/LK
+```
+Copy this password and use it in the JUDGEDAEMON_PASSWORD
 ```bash
 docker run -d \
   --name judgehost-0 \
@@ -71,7 +82,7 @@ docker run -d \
   -e CONTAINER_TIMEZONE=Asia/Karachi \
   -e DOMSERVER_BASEURL=http://domserver/ \
   -e JUDGEDAEMON_USERNAME=judgehost \
-  -e JUDGEDAEMON_PASSWORD="AdminPassword@137" \
+  -e JUDGEDAEMON_PASSWORD="X7xACY+3I4KlCCkxn7BfYiuPSGh1S/LK" \
   domjudge/judgehost:latest
 ```
 
